@@ -1,7 +1,5 @@
-import { Component,computed,signal } from '@angular/core';
-import { DUMMY_USERS } from '../../dummy-data/dummy-users';
+import { Component,} from '@angular/core';
 
-const randomIndex = Math.floor(Math.random()* DUMMY_USERS.length)
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -13,17 +11,17 @@ const randomIndex = Math.floor(Math.random()* DUMMY_USERS.length)
 
 export class UserComponent {
   // selectedUser = DUMMY_USERS[randomIndex];
-  selectedUser = signal(DUMMY_USERS[randomIndex])
-  imagePath = computed(()=>`assets/users/${this.selectedUser().avatar}`)
+  // selectedUser = signal(DUMMY_USERS[randomIndex])
+  // imagePath = computed(()=>`assets/users/${this.selectedUser().avatar}`)
   
   // get imagePath(){
     // return `assets/users/${this.selectedUser.avatar}`
   // }
 
   onSelectUser(){
-    console.log("clicked");
-    const randomIndex = Math.floor(Math.random()* DUMMY_USERS.length)
-    // this.selectedUser = DUMMY_USERS[randomIndex];
-    this.selectedUser.set(DUMMY_USERS[randomIndex])
+    // console.log("clicked");
+    // const randomIndex = Math.floor(Math.random()* DUMMY_USERS.length)
+    // // this.selectedUser = DUMMY_USERS[randomIndex];
+    // this.selectedUser.set(DUMMY_USERS[randomIndex])
   }
 }
