@@ -8,9 +8,18 @@ import { Component, computed, Input, input } from "@angular/core";
   styleUrl: "./user.component.css",
 })
 export class UserComponent {
-  avatar = input.required<string>();
-  name = input.required<string>();
-  imagePath = computed(() => `assets/users/${this.avatar()}`);
+  @Input({
+    required: true,
+  })
+  avatar!: string;
+  @Input({ required: true }) name!: string;
+  get imagePath() {
+    return `assets/users/${this.avatar}`;
+  }
+  onSelectUser() {}
+  // avatar = input.required<string>();
+  // name = input.required<string>();
+  // imagePath = computed(() => `assets/users/${this.avatar()}`);
 
   // @Input({
   //   required: true,
@@ -20,7 +29,7 @@ export class UserComponent {
   // get imagePath() {
   //   return `assets/users/${this.avatar}`;
   // }
-  onSelectUser() {}
+  // onSelectUser() {}
   // selectedUser = DUMMY_USERS[randomIndex];
   // selectedUser = signal(DUMMY_USERS[randomIndex])
   // imagePath = computed(()=>`assets/users/${this.selectedUser().avatar}`)
