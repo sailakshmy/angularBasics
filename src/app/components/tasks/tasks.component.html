@@ -1,8 +1,9 @@
+@if(isAddingTask){ <app-new-task />}
 <section id="tasks">
   <header>
     <h2>{{ name }}'s Tasks</h2>
     <menu>
-      <button>Add New Tasks!</button>
+      <button (click)="onStartAddTask()">Add New Tasks!</button>
     </menu>
   </header>
   <ul>
