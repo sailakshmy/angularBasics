@@ -14,16 +14,14 @@ import { TaskFormData } from "./new-task/new-task.model";
 export class TasksComponent {
   @Input({ required: true }) name!: string;
   @Input({ required: true }) userId!: string;
-  tasks = DUMMY_TASKS;
+
   isAddingTask = false;
 
   get selectedUserTasks() {
-    return this.tasks?.filter((task) => task.userId === this.userId);
+    return;
   }
 
-  onCompleteTask(taskId: string) {
-    this.tasks = this.tasks?.filter((task) => task.id !== taskId);
-  }
+  onCompleteTask(taskId: string) {}
 
   onStartAddTask() {
     this.isAddingTask = true;
@@ -34,15 +32,6 @@ export class TasksComponent {
   }
 
   onAddTask(taskFormData: TaskFormData) {
-    const { title, summary, date } = taskFormData;
-    console.log("taskFormData", taskFormData);
-    this.tasks.push({
-      id: new Date().getTime().toString(),
-      title,
-      summary,
-      dueDate: date,
-      userId: this.userId,
-    });
     this.isAddingTask = false;
   }
 }
