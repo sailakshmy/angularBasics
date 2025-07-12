@@ -3,6 +3,7 @@ import { TaskComponent } from "./task/task.component";
 import { DUMMY_TASKS } from "../../dummy-data/dummy-tasks";
 import { NewTaskComponent } from "./new-task/new-task.component";
 import { TaskFormData } from "./new-task/new-task.model";
+import { TasksService } from "./tasks.service";
 
 @Component({
   selector: "app-tasks",
@@ -17,8 +18,10 @@ export class TasksComponent {
 
   isAddingTask = false;
 
+  constructor(private tasksService: TasksService) {}
+
   get selectedUserTasks() {
-    return;
+    return this.tasksService.getUserTasks(this.userId);
   }
 
   onCompleteTask(taskId: string) {}
@@ -27,11 +30,7 @@ export class TasksComponent {
     this.isAddingTask = true;
   }
 
-  onCancelAddTask() {
-    this.isAddingTask = false;
-  }
-
-  onAddTask(taskFormData: TaskFormData) {
+  onCloseAddTask() {
     this.isAddingTask = false;
   }
 }
